@@ -40,6 +40,13 @@ for %%p in (%processes%) do (
 
 endlocal
 :vpn
+cls
+echo %d%The following Line will show The connection, If it's not Wi-Fi or Ethernet, It's a VPN
+powershell.exe -command "Test-NetConnection | findstr /i "InterfaceAlias""
+echo %d%Would you like To Continue To SS? [Y/N]
+set /p P=""
+if %P% == Y (goto checkvpns) else (goto end)
+pause>nul
 :checkvpns
 setlocal enabledelayedexpansion
 set "processes=pia-client ProtonVPNService IpVanish WindScribe ExpressVPN NordVPN CyberGhost pia-tray SurfShark VyprVPN HSSCP TunnelBear ProtonVPN"

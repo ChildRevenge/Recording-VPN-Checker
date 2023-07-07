@@ -22,6 +22,26 @@ set g2=[102m
 set r2=[101m
 set t=[40m
 set bo=[01m
+chcp 65001 >nul
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo                 %c%             ██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗ ██████╗ ███████╗
+echo                              ██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██╔════╝ ██╔════╝
+echo                              ██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██║  ███╗█████╗  
+echo                              ██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝  
+echo                              ██║  ██║███████╗ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗
+echo                              ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                                     
+echo.                                                                                               
+chcp 850 >nul
+ping localhost -n 5 >nul
+cls
 :check_process
 setlocal enabledelayedexpansion
 set "processes=mirillis wmcap playclaw XSplit Screencast camtasia dxtory nvcontainer obs64 bdcam RadeonSettings Fraps CamRecorder XSplit.Core ShareX Action lightstream streamlabs webrtcvad openbroadcastsoftware movavi.screen.recorder icecreamscreenrecorder smartpixel d3dgear gadwinprintscreen apowersoftfreescreenrecorder bandicamlauncher hypercam loiloilgamerecorder nchexpressions captura vokoscreenNG simple.screen.recorder recordmydesktop kazam gtk-recordmydesktop screenstudio screenkey jupyter-notebook"
@@ -63,10 +83,17 @@ for %%p in (%processes%) do (
         if "%M%" == "2" goto end
     )
 )
-
 endlocal
+:vpn2
+cls 
+powershell -command "$ip = (Invoke-WebRequest ifconfig.me/ip -UseBasicParsing).Content; (Invoke-WebRequest \"https://proxycheck.io/v2/$ip\?vpn=1^&asn=1\" -UseBasicParsing).Content >> $env:temp\proxy.json;(Get-Content $env:temp\proxy.json) -match 'proxy'"
+del /f %temp%\proxy.json 2>nul
+echo %d%If Proxy says yes, The user is on a Vpn or a proxy.
+echo %r%Press Any Key To Continue!%d%
+pause>nul
 :end
 cls
+chcp 65001 >nul
 echo.
 echo.
 echo.
@@ -74,15 +101,18 @@ echo.
 echo.
 echo.
 echo.
-echo         %g%            _///////    _////////_//         _//_///// ///_///      _//   _////    _////////
-echo                     _//    _//  _//       _//       _// _//       _/ _//   _//  _/    _//  _//      
-echo                     _//    _//  _//        _//     _//  _//       _// _//  _// _//         _//      
-echo                     _/ _//      _//////     _//   _//   _//////   _//  _// _// _//         _//////  
-echo                     _//  _//    _//          _// _//    _//       _//   _/ _// _//   _//// _//      
-echo                     _//    _//  _//           _////     _//       _//    _/ //  _//    _/  _//      
-echo                     _//      _//_////////      _//      _//////// _//      _//   _/////    _////////
+echo.
+echo.
+echo                 %c%             ██████╗ ███████╗██╗   ██╗███████╗███╗   ██╗ ██████╗ ███████╗
+echo                              ██╔══██╗██╔════╝██║   ██║██╔════╝████╗  ██║██╔════╝ ██╔════╝
+echo                              ██████╔╝█████╗  ██║   ██║█████╗  ██╔██╗ ██║██║  ███╗█████╗  
+echo                              ██╔══██╗██╔══╝  ╚██╗ ██╔╝██╔══╝  ██║╚██╗██║██║   ██║██╔══╝  
+echo                              ██║  ██║███████╗ ╚████╔╝ ███████╗██║ ╚████║╚██████╔╝███████╗
+echo                              ╚═╝  ╚═╝╚══════╝  ╚═══╝  ╚══════╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝                                                     
+echo.                                                                                               
 echo.                                                                             
 echo.
+chcp 850 >nul
 ping localhost -n 5 >nul
 cls
 echo Done! Have A Nice Day!
